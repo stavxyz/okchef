@@ -31,8 +31,7 @@ class ChefClient(object):
 
     """Client to the Chef API."""
 
-    def __init__(self, endpoint, version='12.0.2',
-                 user_id=None, private_key=None):
+    def __init__(self, endpoint, version='12.0.2'):
 
         endpoint = endpoint
         self.version = version
