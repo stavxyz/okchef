@@ -59,13 +59,19 @@ class HttpChefMixlibAuth(requests.auth.AuthBase):
         if not all((user_id, private_key)):
             raise ValueError("Authenticating to Chef server requires "
                              "both user_id and private_key.")
-        private_key = RSAKey.load_pem(private_key)
+        if isinstance(private_key, rsa.RSAPrivateKey):
+            private_key = RSAKey(private_key)
+        elif isinstance(private_key, RSAKey):
+            # good to go
+            pass
+        else:
+            private_key = RSAKey.load_pem(private_key)
         self.private_key = private_key
         self.user_id = user_id
 
     def __repr__(self):
         """Show the auth handler object."""
-        return '%s(%s)' % (self.__class__.__name__, self.user)
+        return '%s(%s)' % (self.__class__.__name__, self.user_id)
 
     def __call__(self, request):
         """Sign the request."""
@@ -77,7 +83,7 @@ class HttpChefMixlibAuth(requests.auth.AuthBase):
         canonical_request = self.canonical_request(
             request.method, hashed_path, hashed_body, timestamp)
 
-        signed = self.private_key.sign(canonical_request, base64=True)
+        signed = self.private_key.sign(canonical_request, b64=True)
         signed_chunks = utils.splitter(signed, chunksize=60)
         signed_headers = {
             'X-Ops-Authorization-%d' % (i+1): segment
@@ -118,9 +124,13 @@ class RSAKey(object):
     """
 
     def __init__(self, private_key):
+        """Requires an RSAPrivateKey instance.
 
-        import pdb; pdb.set_trace()
-        # check isinstance with rsa module
+        Key class from cryptography.hazmat.primitives.asymmetric.rsa
+        """
+        if not isinstance(private_key, rsa.RSAPrivateKey):
+            raise TypeError("private_key must be an instance of "
+                            "cryptography-RSAPrivateKey.")
         self.private_key = private_key
 
     @classmethod
@@ -133,23 +143,23 @@ class RSAKey(object):
         #TODO(sam): try to break this in tests
         maybe_path = utils.normpath(private_key)
         if os.path.isfile(maybe_path):
-            with open(private_key, 'rb') as pkf:
+            with open(maybe_path, 'rb') as pkf:
                 private_key = pkf.read()
         pkey = serialization.load_pem_private_key(
             private_key,
             password=password,
             backend=crypto_backends.default_backend())
-        return type(cls)(pkey)
+        return cls(pkey)
 
-    def sign(self, data, base64=True):
+    def sign(self, data, b64=True):
         """Sign data with the private key and return the signed data.
 
-        The signed data will be Base64 encoded if base64 is True.
+        The signed data will be Base64 encoded if b64 is True.
         """
         padder = padding.PKCS1v15()
         signer = self.private_key.signer(padder, None)
         signer.update(data)
         signed = signer.finalize()
-        if base64:
+        if b64:
             signed = base64.b64encode(signed)
         return signed
