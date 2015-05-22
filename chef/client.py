@@ -14,7 +14,7 @@
 
 import requests
 
-from chef import mixlib_auth
+import chef
 
 
 class ChefClientSession(requests.Session):
@@ -29,7 +29,11 @@ class ChefClientSession(requests.Session):
 
 class ChefClient(object):
 
-    """Client to the Chef API."""
+    """Client to the Chef API.
+
+    Most calls will require authorization. Use the authenticate()
+    method to authorize this client's session.
+    """
 
     def __init__(self, endpoint, version='12.0.2'):
 
@@ -37,23 +41,20 @@ class ChefClient(object):
         self.version = version
         self.endpoint = endpoint.strip().rstrip(' /')
         self._session = None
-        self._auth = None
         self._http_adapter = None
+        self.user_id = None
 
     def __repr__(self):
         """Show client instance."""
-        rpr = "ChefClient('%s'" % self.endpoint
-        if len(self.auth) > 0:
-            rpr += ', auth=%r' % self.auth
-        rpr += ')'
+        rpr = "ChefClient('%s')" % self.endpoint
+        if self.auth:
+            rpr += ' < auth=%r >' % self.auth
         return rpr
 
     @property
     def auth(self):
         """Return the session's auth value."""
-        if not self._auth:
-            self._auth = self.session.auth
-        return self._auth
+        return self.session.auth
 
     @property
     def session(self):
@@ -72,8 +73,9 @@ class ChefClient(object):
         return self._session
 
     def authenticate(self, user_id, private_key):
-        auth = mixlib_auth.HttpChefMixlibAuth(user_id, private_key)
+        auth = chef.mixlib_auth.HttpChefMixlibAuth(user_id, private_key)
         self.session.auth = auth
+        self.user_id = user_id
         return auth
 
     def get_version(self):
@@ -81,7 +83,7 @@ class ChefClient(object):
         return self.get('/version').json()
 
     def _caturl(self, path):
-        path = path.strip().rstrip(' /')
+        path = path.strip().lstrip(' /')
         return '%s/%s' % (self.endpoint, path)
 
     def get(self, path, **kwargs):
