@@ -10,14 +10,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import absolute_import
+
 import os
 
-from .client import ChefClient
-from .__about__ import *
+from chef import mixlib_auth
+from chef.client import ChefClient
+from chef.__about__ import *  # noqa
 
 __all__ = ['HOSTED_CHEF_API', 'ChefClient']
 
-HOSTED_CHEF_API = 'https://api.chef.io'
+HOSTED_CHEF_APIS = ['https://api.chef.io', 'https://api.opscode.com']
+HOSTED_CHEF_API = HOSTED_CHEF_API[0]
 _HERE = os.path.dirname(os.path.realpath(__file__))
 _HEAD_FILE = os.path.abspath(os.path.join(_HERE, os.pardir, '.git', 'HEAD'))
 
