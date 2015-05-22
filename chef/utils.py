@@ -25,4 +25,5 @@ def normpath(path):
 
 def splitter(iterable, chunksize=60):
     """Split an iterable that supports indexing into chunks of 'chunksize'."""
-    return (l[0+i:chunksize+i] for i in range(0, len(iterable), chunksize))
+    return (iterable[0+i:chunksize+i]
+            for i in range(0, len(iterable), chunksize))
