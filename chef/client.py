@@ -46,9 +46,10 @@ class ChefClient(object):
 
     def __repr__(self):
         """Show client instance."""
-        rpr = "ChefClient('%s')" % self.endpoint
+        rpr = "<ChefClient('%s')" % self.endpoint
         if self.auth:
-            rpr += ' < auth=%r >' % self.auth
+            rpr += ' auth=%r' % self.auth
+        rpr += '>'
         return rpr
 
     @property
