@@ -21,7 +21,10 @@ with open(os.path.join(src_dir, 'chef', '__about__.py')) as abt:
     exec(abt.read(), about)
 
 tests_require = []
-dependencies = []
+dependencies = [
+    'requests==2.7.0',
+    #'cryptography==?',
+]
 
 
 setup(
