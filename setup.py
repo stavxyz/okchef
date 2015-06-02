@@ -23,7 +23,12 @@ with open(os.path.join(src_dir, 'chef', '__about__.py')) as abt:
 tests_require = []
 dependencies = [
     'requests==2.7.0',
-    #'cryptography==?',
+#    'cryptography>=0.10.dev9',
+]
+# cryptography==0.10.dev9 is not on pypi, so provide a link
+dependency_links = [
+#    ('https://github.com/samstav/cryptography'
+#     '/tarball/rsa-bypass-hash-on-signer#egg=cryptography-0.10.dev9'),
 ]
 
 
@@ -36,6 +41,7 @@ setup(
     author=about['__author__'],
     author_email=about['__email__'],
     tests_require=tests_require,
+    dependency_links=dependency_links,
     test_suite='tests',
     packages=find_packages(exclude=['tests']),
     classifiers=[
