@@ -27,7 +27,7 @@ _HEAD_FILE = os.path.abspath(os.path.join(_HERE, os.pardir, '.git', 'HEAD'))
 
 
 def _read_commit_dot_txt():
-    commit_dot_text = os.path.join(_HERE, 'commit.txt')
+    commit_dot_txt = os.path.join(_HERE, 'commit.txt')
     if os.path.isfile(commit_dot_txt):
         with open(commit_dot_txt) as sha:
             return sha.read().strip()
@@ -39,7 +39,7 @@ def _read_commit(path):
     Falls back to reading commit.txt in this dir.
     """
     if not os.path.isfile(path):
-        return _read_version_dot_txt()
+        return _read_commit_dot_txt()
     with open(path) as head:
         headref = head.read().strip()
     if 'ref:' in headref:
