@@ -83,36 +83,32 @@ class ChefClient(object):
         """Return the version object from the server."""
         return self.get('/version').json()
 
-    def _caturl(self, path):
-        path = path.strip().lstrip(' /')
-        return '%s/%s' % (self.endpoint, path)
+    def request(self, path, **kwargs):
+        url = '%s/%s' % (self.endpoint, path.strip().lstrip(' /'))
+        method = kwargs.pop('method', 'GET') or 'GET'
+        # why? avoid KeyError and falsy values
+        return self.session.request(method, url, **kwargs)
 
     def get(self, path, **kwargs):
         """Perform a GET request."""
-        url = self._caturl(path)
-        return self.session.get(url, **kwargs)
+        return self.request(path, method='GET', **kwargs)
 
     def post(self, path, **kwargs):
         """Perform a POST request."""
-        url = self._caturl(path)
-        return self.session.post(url, **kwargs)
+        return self.request(path, method='POST', **kwargs)
 
     def delete(self, path, **kwargs):
         """Perform a DELETE request."""
-        url = self._caturl(path)
-        return self.session.delete(url, **kwargs)
+        return self.request(path, method='DELETE', **kwargs)
 
     def options(self, path, **kwargs):
         """Perform an OPTIONS request."""
-        url = self._caturl(path)
-        return self.session.options(url, **kwargs)
+        return self.request(path, method='OPTIONS', **kwargs)
 
     def head(self, path, **kwargs):
         """Perform a HEAD request."""
-        url = self._caturl(path)
-        return self.session.head(url, **kwargs)
+        return self.request(path, method='HEAD', **kwargs)
 
     def patch(self, path, **kwargs):
         """Perform a PATCH request."""
-        url = self._caturl(path)
-        return self.session.patch(url, **kwargs)
+        return self.request(path, method='PATCH', **kwargs)
