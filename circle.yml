@@ -1,0 +1,16 @@
+machine:
+  python:
+    version: 2.7.9
+
+dependencies:
+  override:
+    - pip install tox
+
+test:
+  override:
+    - env PATH="$HOME/bin:$PATH" tox
+  post:
+    - mkdir -p $CIRCLE_ARTIFACTS/coverage
+    - mkdir -p $CIRCLE_TEST_REPORTS/xunit
+    - cp -r coverage/ $CIRCLE_ARTIFACTS/coverage/
+    - cp nosetests.xml $CIRCLE_TEST_REPORTS/xunit/xunit.xml
