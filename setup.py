@@ -24,7 +24,8 @@ tests_require = [
     'vcrpy>=1.5.2',
 ]
 dependencies = [
-    'requests==2.7.0',
+    'requests-chef>=0.0.2',
+    'requests>=2.7.0',
 #    'cryptography>=0.10.dev9',
 ]
 # cryptography==0.10.dev9 is not on pypi, so provide a link

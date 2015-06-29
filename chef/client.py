@@ -12,6 +12,7 @@
 
 """Client for Chef API."""
 
+import requests_chef
 import requests
 
 import chef
@@ -74,7 +75,7 @@ class ChefClient(object):
         return self._session
 
     def authenticate(self, user_id, private_key):
-        auth = chef.mixlib_auth.HttpChefMixlibAuth(user_id, private_key)
+        auth = requests_chef.ChefAuth(user_id, private_key)
         self.session.auth = auth
         self.user_id = user_id
         return auth
@@ -87,7 +88,7 @@ class ChefClient(object):
         url = '%s/%s' % (self.endpoint, path.strip().lstrip(' /'))
         method = kwargs.pop('method', 'GET') or 'GET'
         # why? avoid KeyError and falsy values
-        return self.session.request(method, url, **kwargs)
+        return self.session.request(method.upper(), url, **kwargs)
 
     def get(self, path, **kwargs):
         """Perform a GET request."""

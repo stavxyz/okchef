@@ -14,7 +14,6 @@ from __future__ import absolute_import
 
 import os
 
-from chef import mixlib_auth
 from chef.client import ChefClient
 from chef.__about__ import *  # noqa
 
