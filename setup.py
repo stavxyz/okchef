@@ -26,12 +26,12 @@ tests_require = [
 dependencies = [
     'requests-chef>=0.0.2',
     'requests>=2.7.0',
-#    'cryptography>=0.10.dev9',
+    'cryptography==0.9.1f',
 ]
-# cryptography==0.10.dev9 is not on pypi, so provide a link
+# cryptography==0.9.1f is not on pypi, so provide a link
 dependency_links = [
-#    ('https://github.com/samstav/cryptography'
-#     '/tarball/rsa-bypass-hash-on-signer#egg=cryptography-0.10.dev9'),
+    ('https://github.com/samstav/cryptography'
+     '/tarball/rsa-bypass-hash-on-signer#egg=cryptography-0.9.1f'),
 ]
 
 
