@@ -46,7 +46,6 @@ class TestChefClient(unittest.TestCase):
         self.vcr = vcr.VCR(cassette_library_dir=CASSETTE_LIB,
                            record_mode=self.record_mode,
                            before_record_request=self.before_record_request)
-        print 'VCRPY RECORD MODE: {}'.format(self.vcr.record_mode)
         self.okchef_client = chef.ChefClient(self.url)
         self.okchef_client.authenticate(self.username, self.pem)
         self.okchef_client.session.headers['Accept-Encoding'] = ''
