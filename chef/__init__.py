@@ -52,4 +52,3 @@ def _read_commit(path):
 
 
 __commit__ = _read_commit(_HEAD_FILE)
-
