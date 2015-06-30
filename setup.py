@@ -26,12 +26,6 @@ tests_require = [
 dependencies = [
     'requests-chef>=0.0.2',
     'requests>=2.7.0',
-    'cryptography==0.9.1f',
-]
-# cryptography==0.9.1f is not on pypi, so provide a link
-dependency_links = [
-    ('https://github.com/samstav/cryptography'
-     '/tarball/rsa-bypass-hash-on-signer#egg=cryptography-0.9.1f'),
 ]
 
 
@@ -44,7 +38,6 @@ setup(
     author=about['__author__'],
     author_email=about['__email__'],
     tests_require=tests_require,
-    dependency_links=dependency_links,
     test_suite='tests',
     packages=find_packages(exclude=['tests']),
     classifiers=[
