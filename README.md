@@ -1,6 +1,7 @@
 # okchef
 [![latest](https://img.shields.io/pypi/v/okchef.svg)](https://pypi.python.org/pypi/okchef)
 [![Circle CI](https://circleci.com/gh/samstav/okchef.svg?style=svg)](https://circleci.com/gh/samstav/okchef)
+[![Coverage Status](https://coveralls.io/repos/samstav/okchef/badge.svg)](https://coveralls.io/r/samstav/okchef)
 
 ```python
 
