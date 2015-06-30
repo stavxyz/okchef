@@ -5,6 +5,7 @@ machine:
 dependencies:
   override:
     - pip install tox
+    - pip install python-coveralls
 
 test:
   override:
@@ -14,3 +15,4 @@ test:
     - mkdir -p $CIRCLE_TEST_REPORTS/xunit
     - cp -r coverage/ $CIRCLE_ARTIFACTS/coverage/
     - cp nosetests.xml $CIRCLE_TEST_REPORTS/xunit/xunit.xml
+    - coveralls
