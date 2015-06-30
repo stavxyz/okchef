@@ -20,29 +20,55 @@ about = {}
 with open(os.path.join(src_dir, 'chef', '__about__.py')) as abt:
     exec(abt.read(), about)
 
-tests_require = [
+# pandoc --from=markdown_github --to=rst README.md --output=README.rst
+readme = os.path.join(src_dir, 'README.rst')
+if os.path.isfile(readme):
+    with open(os.path.join(src_dir, 'README.rst')) as rdme:
+        LONG_DESCRIPTION = rdme.read()
+else:
+    LONG_DESCRIPTION = ''
+
+
+TESTS_REQUIRE = [
     'vcrpy>=1.5.2',
 ]
-dependencies = [
+
+
+INSTALL_REQUIRES = [
     'requests-chef>=0.0.2',
     'requests>=2.7.0',
 ]
 
 
-setup(
-    name=about['__title__'],
-    version=about['__version__'],
-    description=about['__summary__'],
-    license=about['__license__'],
-    url=about['__url__'],
-    author=about['__author__'],
-    author_email=about['__email__'],
-    tests_require=tests_require,
-    test_suite='tests',
-    packages=find_packages(exclude=['tests']),
-    classifiers=[
-        "Programming Language :: Python",
-        "Programming Language :: Python :: 2.7",
-    ],
-    install_requires=dependencies,
-)
+CLASSIFIERS = [
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: Apache Software License',
+    'Operating System :: OS Independent',
+    'Topic :: Software Development',
+    'Development Status :: 4 - Beta',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 2',
+    'Programming Language :: Python :: 2.7',
+    'Programming Language :: Python :: 3.4',
+]
+
+
+package_attributes = {
+    'name': about['__title__'],
+    'description': about['__summary__'],
+    'long_description': LONG_DESCRIPTION,
+    'keywords': ' '.join(about['__keywords__']),
+    'version': about['__version__'],
+    'tests_require': TESTS_REQUIRE,
+    'test_suite': 'tests',
+    'install_requires': INSTALL_REQUIRES,
+    'packages': find_packages(exclude=['tests']),
+    'author': about['__author__'],
+    'author_email': about['__email__'],
+    'classifiers': CLASSIFIERS,
+    'license': about['__license__'],
+    'url': about['__url__'],
+}
+
+
+setup(**package_attributes)
