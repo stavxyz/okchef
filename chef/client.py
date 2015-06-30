@@ -96,6 +96,10 @@ class ChefClient(object):
         """Perform a POST request."""
         return self.request(path, method='POST', **kwargs)
 
+    def put(self, path, **kwargs):
+        """Perform a PUT request."""
+        return self.request(path, method='PUT', **kwargs)
+
     def delete(self, path, **kwargs):
         """Perform a DELETE request."""
         return self.request(path, method='DELETE', **kwargs)
