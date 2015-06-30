@@ -15,8 +15,6 @@
 import requests_chef
 import requests
 
-import chef
-
 
 class ChefClientSession(requests.Session):
 
