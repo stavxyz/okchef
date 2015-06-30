@@ -35,7 +35,7 @@ TESTS_REQUIRE = [
 
 
 INSTALL_REQUIRES = [
-    'requests-chef>=0.0.2',
+    'requests-chef>=0.0.4',
     'requests>=2.7.0',
 ]
 
