@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 __title__ = "okchef"
-__summary__ = "okchef is a chef api client library"
+__summary__ = "python client library for Chef Server"
 __keywords__ = ['chef', 'requests', 'client', 'api', 'requests-chef']
 __url__ = "https://github.com/samstav/okchef"
 __version__ = "1.1.2"
