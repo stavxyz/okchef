@@ -2,6 +2,7 @@
 [![latest](https://img.shields.io/pypi/v/okchef.svg)](https://pypi.python.org/pypi/okchef)
 [![Circle CI](https://circleci.com/gh/samstav/okchef/tree/master.svg?style=shield)](https://circleci.com/gh/samstav/okchef)
 [![Coverage Status](https://coveralls.io/repos/samstav/okchef/badge.svg?branch=master)](https://coveralls.io/r/samstav/okchef?branch=master)
+[![Requirements Status](https://requires.io/github/samstav/okchef/requirements.svg?branch=master)](https://requires.io/github/samstav/okchef/requirements/?branch=master)
 
 
 
