@@ -37,6 +37,7 @@ TESTS_REQUIRE = [
 INSTALL_REQUIRES = [
     'requests-chef>=0.0.4',
     'requests>=2.7.0',
+    'six>=1.9.0',
 ]
 
 
