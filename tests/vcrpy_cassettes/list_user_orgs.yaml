@@ -6,34 +6,34 @@ interactions:
       Accept-Encoding: ['']
       Connection: [keep-alive]
       Content-Type: [application/json]
-      User-Agent: [python/OkChef python-requests/2.7.0 CPython/2.7.9 Darwin/13.4.0]
+      User-Agent: [python/OkChef python-requests/2.7.0 CPython/3.4.3 Darwin/13.4.0]
       X-Chef-Version: [12.0.2]
-      X-Ops-Authorization-1: [3116b6355c0494ae8368cbef93d1964f77a009e0c6345119e4f22e23e122210d4c06a254fb931d38677660d7dde75bc56c0f753c366e851f5c5cc0f408a01e34]
-      X-Ops-Authorization-2: [4ec9b444bee4edca3aa4d1b304755310510992f3214683b07ef8b42c615e7d8896b40e4b105388adcd9587685b92944ba007c7d0fb6598a94827003b37808a04]
-      X-Ops-Authorization-3: [7ed9951f2f02ea3e20f3e740402e2acab3e2953f6f2d4848eb27c8ed301f701c7a81e0b1d2931f7418eaa693c0b82d7f645befba4056c2424d3fa0dddfe23b85]
-      X-Ops-Authorization-4: [4daa90f47ef4addc8e2bea1908e5411bf6ff030f67d2b669878efd786d3921dc798d74f28ec840bac30a5cfa97d057655928b142573acb13671f7c1d9258bfa8]
-      X-Ops-Authorization-5: [5309d7b116451a8ec81bf015f5cab1dfc0c7d3873ec4af08877a42bfae4573b730638e4dd458f2ef021bec3678bc61ed45eb6ac2ecfc73c890c0ed489d9d8b14]
-      X-Ops-Authorization-6: [89703c771c76b1f2d728712e3c61fcddf303133ae66bc92b57283bc7c8f9811118d3f6696aa84deb0264b707e7f645a5f04ad8b2cf45fe6972e928df8877e42a]
+      X-Ops-Authorization-1: [f5c6038c5e06313ffdf2b0b87e785ac8dbedcaeaa8a80dff534d7dd1daa0b118f70572653c67eae010caae68115616f07e6b68b85716fcfba1c7e236311036e2]
+      X-Ops-Authorization-2: [060d18e844c8c4f10a681d00361f40edc4311ffc1d400471488fb3cd698e24306bc15493b50ad132cc0f3d126017e32967046426876b2d31b63d8b3e30a243b9]
+      X-Ops-Authorization-3: [5d79efb029fee1597d55b72b02e1b733f30bb704cf442ad7252c8badca404bca61aa58e3cab85b0565dbb7e07c6effd24b59fdb2648a055f02c38b4e4d414da4]
+      X-Ops-Authorization-4: [3412b9e69cf81b2741823a96f1d60ce241beadb0c2b9761474174c5b820871953843054f96e824c821d0ac8619ebf5866133e9242593d8a8813a4c931e5e5a92]
+      X-Ops-Authorization-5: [9cb620dbbf9e8dca51b1ac5b600bf2f1b324c89514c7086e645f5d5283d16a98d16ebea57f49856e473802240de9885300982187d174b2f54cfa09f2e32beb0c]
+      X-Ops-Authorization-6: [931312d1fd5ba6ba77fa0fed34e4c33313d5db86916f0028f1611ac821bc41ba8abdcebae6bf1a0819876c4b044e43f555e9d09ac14f4616e89aaf74303878e7]
       X-Ops-Content-Hash: [c8cf6f8cac5ec374bca963f96d1512082b407949f193643059ebd849c676a7cca74ddf25ca75edc8bcbcb33e8b3d58696b1310a3ab677639b39054b1f301a5b4]
       X-Ops-Sign: [algorithm=sha1;version=1.0]
-      X-Ops-Timestamp: ['2015-06-29T22:00:28Z']
+      X-Ops-Timestamp: ['2015-07-03T05:57:34Z']
       X-Ops-UserId: [test-chef-server-user]
     method: GET
     uri: https://test-chef-server.net/users/test-chef-server-user/organizations
   response:
-    body: {string: !!python/unicode '[{"organization": {"guid": "30946989016799d20d53eea09c9c8f7c9b53399c0d09ebf3c842a1d00f47596c8efb96fcce60a418546d902d11083c3aa88650dfffb45a9b14b0249c23d4f75b",
-        "name": "093d8f4ae9eaab977e98ec5478e0777dbc4b988ffa4e07308fa0ba0a40c8be9a3666b30e2617016d6b2b1ab4dc75b7ca8210b4a5d0af460555574348a499a73e",
+    body: {string: '[{"organization": {"name": "093d8f4ae9eaab977e98ec5478e0777dbc4b988ffa4e07308fa0ba0a40c8be9a3666b30e2617016d6b2b1ab4dc75b7ca8210b4a5d0af460555574348a499a73e",
+        "guid": "30946989016799d20d53eea09c9c8f7c9b53399c0d09ebf3c842a1d00f47596c8efb96fcce60a418546d902d11083c3aa88650dfffb45a9b14b0249c23d4f75b",
         "full_name": "093d8f4ae9eaab977e98ec5478e0777dbc4b988ffa4e07308fa0ba0a40c8be9a3666b30e2617016d6b2b1ab4dc75b7ca8210b4a5d0af460555574348a499a73e"}},
-        {"organization": {"guid": "a09e2cea1906325e707fd5cb4adc0d829aaa012837924e233281dc93fab7f3c889b37a75638741b795085f2013d024c32ed6885efaa7afb8258e27af4cb11a84",
-        "name": "215b84081ba98b2f472af39cf21155bfe20a6d10a08d6ff69702c9c89409fcdeacd52ef7bfb8d17909d994a83b5576c91d55f0d6b64c040b49b063cd32d1b4f0",
+        {"organization": {"name": "215b84081ba98b2f472af39cf21155bfe20a6d10a08d6ff69702c9c89409fcdeacd52ef7bfb8d17909d994a83b5576c91d55f0d6b64c040b49b063cd32d1b4f0",
+        "guid": "a09e2cea1906325e707fd5cb4adc0d829aaa012837924e233281dc93fab7f3c889b37a75638741b795085f2013d024c32ed6885efaa7afb8258e27af4cb11a84",
         "full_name": "2892034a9f7c307cbf7792e6afc0a413a405bdfb340612ad98de5fdbd3b059fad3437dfbabd619498436ee502a2622b386b1a5ccebb41197710b9347629af6ef"}}]'}
     headers:
-      connection: [keep-alive]
-      content-length: ['15307']
-      content-type: [application/json]
-      date: ['Mon, 29 Jun 2015 22:00:27 GMT']
-      server: [ngx_openresty]
-      x-ops-api-info: [flavor=hec;version=12.0.0;oc_erchef=12.1.0]
-      x-ops-server-api-version: ['{"min_version":"0","max_version":"1","request_version":"0","response_version":"0"}']
+      Connection: [keep-alive]
+      Content-Length: ['15545']
+      Content-Type: [application/json]
+      Date: ['Fri, 03 Jul 2015 05:57:34 GMT']
+      Server: [ngx_openresty]
+      X-Ops-API-Info: [flavor=hec;version=12.0.0;oc_erchef=12.1.0]
+      X-Ops-Server-API-Version: ['{"min_version":"0","max_version":"1","request_version":"0","response_version":"0"}']
     status: {code: 200, message: OK}
 version: 1
