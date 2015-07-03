@@ -1,13 +1,14 @@
 """tests for okchef."""
-
 import copy
 import hashlib
 import json
 import os
 import unittest
-import urlparse
 
 import chef
+import six
+
+from six.moves.urllib import parse
 
 import vcr
 
@@ -28,6 +29,8 @@ def sha512_hex(data):
     if not data:
         return data
     hasher = hashlib.sha512()
+    if not isinstance(data, six.binary_type):
+        data = data.encode('utf-8')
     hasher.update(data)
     return hasher.hexdigest()
 
@@ -65,8 +68,8 @@ class TestChefClient(unittest.TestCase):
         # the following properties are derived from self.uri
         #   port, host, scheme, path, query, url, protocol
         # i.e. self.uri can be modified, the others cant
-        parsed_uri = urlparse.urlparse(request.uri)
-        request.uri = urlparse.ParseResult(
+        parsed_uri = parse.urlparse(request.uri)
+        request.uri = parse.ParseResult(
             scheme=parsed_uri.scheme,
             netloc=TEST_NETLOC,
             # path=sha512_hex(parsed_uri.path),
@@ -90,16 +93,17 @@ class TestChefClient(unittest.TestCase):
     def test_list_user_orgs(self):
 
         def _br_res(response):
-            dbody = json.loads(response['body']['string'])
+            body_string = response['body']['string']
+            dbody = json.loads(body_string.decode('utf-8'))
             # we only need a small slice for testing
             dbody = sorted(dbody, key=lambda o: o['organization']['guid'])[:2]
             # TODO(sam): see what happens when a user
             #            tries to --record with no orgs online
             for org in dbody:
-                self.assertEqual(org.keys(), ['organization'])
+                self.assertEqual(list(org.keys()), ['organization'])
                 for key, val in org['organization'].items():
                     org['organization'][key] = sha512_hex(val)
-            response['body']['string'] = json.dumps(dbody)
+            response['body']['string'] = json.dumps(dbody).encode('utf_8')
             return response
 
         with self.vcr.use_cassette(path='list_user_orgs.yaml',
