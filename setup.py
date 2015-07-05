@@ -11,6 +11,7 @@
 # limitations under the License.
 
 import os
+import sys
 
 from setuptools import find_packages
 from setuptools import setup
@@ -54,6 +55,19 @@ CLASSIFIERS = [
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.4',
 ]
+
+
+# Add the commit hash to the keywords for sanity.
+if any(k in ' '.join(sys.argv).lower() for k in ['upload', 'dist']):
+    import subprocess
+    try:
+        current_commit = subprocess.check_output(
+            ['git', 'rev-parse', 'HEAD']).strip()
+    except (OSError, subprocess.CalledProcessError):
+        pass
+    else:
+        if current_commit and len(current_commit) == 40:
+            about['__keywords__'].append(current_commit[:8])
 
 
 package_attributes = {
