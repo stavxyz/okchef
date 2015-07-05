@@ -41,10 +41,10 @@ Could not find a version that satisfies the requirement cryptography
 
 Before installing `okchef`, see the current installation instructions for `requests-chef`: https://github.com/samstav/requests-chef#install
 
-If you don't feel like reading those, you can just use these options:
+If you don't feel like reading those, you can just use the `--process-dependency-links` option:
 
 ```
-$ pip install -U --process-dependency-links --no-use-wheel okchef
+$ pip install -U --process-dependency-links okchef
 ```
 
 Preferably, you've read the install for `requests-chef`, so this will work:
