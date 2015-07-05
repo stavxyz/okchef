@@ -33,9 +33,15 @@ response.json()
 
 ### Install
 
+If you see this error:
+
+```
+Could not find a version that satisfies the requirement cryptography
+```
+
 Before installing `okchef`, see the current installation instructions for `requests-chef`: https://github.com/samstav/requests-chef#install
 
-If you don't feel like reading those, you can use `--process-dependency-links` (for now)
+If you don't feel like reading those, you can just use `--process-dependency-links` (for now)
 
 ```
 $ pip install -U --process-dependency-links okchef
