@@ -32,12 +32,12 @@ else:
 
 
 TESTS_REQUIRE = [
-    'vcrpy>=1.5.2',
+    'vcrpy>=1.6.0',
 ]
 
 
 INSTALL_REQUIRES = [
-    'requests-chef>=0.1.3',
+    'requests-chef>=0.1.4',
     'requests>=2.7.0',
     'six>=1.9.0',
 ]
