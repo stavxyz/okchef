@@ -73,6 +73,7 @@ class ChefClient(object):
         return self._session
 
     def authenticate(self, user_id, private_key):
+        """Authenticate this session with the chef server."""
         auth = requests_chef.ChefAuth(user_id, private_key)
         self.session.auth = auth
         self.user_id = user_id
@@ -83,6 +84,7 @@ class ChefClient(object):
         return self.get('/version').json()
 
     def request(self, path, **kwargs):
+        """Perform the request with python-requests."""
         url = '%s/%s' % (self.endpoint, path.strip().lstrip(' /'))
         method = kwargs.pop('method', 'GET') or 'GET'
         # why? avoid KeyError and falsy values

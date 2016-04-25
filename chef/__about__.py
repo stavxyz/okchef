@@ -10,6 +10,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+"""Package attributes and metadata."""
+
 __all__ = (
     '__title__',
     '__summary__',

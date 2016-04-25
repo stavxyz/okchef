@@ -9,6 +9,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+# pylint: disable=wildcard-import
+"""Okchef Package level goodies."""
 
 from __future__ import absolute_import
 
@@ -17,15 +20,16 @@ import os
 from chef.client import ChefClient
 from chef.__about__ import *  # noqa
 
-__all__ = ['HOSTED_CHEF_API', 'ChefClient']
+__all__ = ('HOSTED_CHEF_API', 'ChefClient')
 
-HOSTED_CHEF_APIS = ['https://api.chef.io', 'https://api.opscode.com']
+HOSTED_CHEF_APIS = ('https://api.chef.io', 'https://api.opscode.com')
 HOSTED_CHEF_API = HOSTED_CHEF_APIS[0]
 _HERE = os.path.dirname(os.path.realpath(__file__))
 _HEAD_FILE = os.path.abspath(os.path.join(_HERE, os.pardir, '.git', 'HEAD'))
 
 
 def _read_commit_dot_txt():
+    """Read the commit.txt file and return the contents."""
     commit_dot_txt = os.path.join(_HERE, 'commit.txt')
     if os.path.isfile(commit_dot_txt):
         with open(commit_dot_txt) as sha:
