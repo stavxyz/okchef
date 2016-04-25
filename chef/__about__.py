@@ -10,21 +10,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__all__ = [
+__all__ = (
     '__title__',
     '__summary__',
+    '__keywords__',
     '__url__',
     '__version__',
     '__author__',
     '__email__',
     '__license__',
-]
+    '__copyright__',
+)
 
-__title__ = "okchef"
-__summary__ = "python client library for Chef Server"
+__title__ = 'okchef'
+__summary__ = 'python client library for Chef Server'
 __keywords__ = ['chef', 'requests', 'client', 'api', 'requests-chef']
-__url__ = "https://github.com/samstav/okchef"
-__version__ = "1.2.4"
-__author__ = "Sam Stavinoha"
-__email__ = "samuel.stavinoha@rackspace.com"
-__license__ = "Apache License, Version 2.0"
+__url__ = 'https://github.com/samstav/okchef'
+__version__ = '1.2.5'
+__author__ = 'Sam Stavinoha'
+__email__ = 'samuel.stavinoha@rackspace.com'
+__license__ = 'Apache License, Version 2.0'
+__copyright__ = 'Copyright 2015-2016 Sam Stavinoha'
