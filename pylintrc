@@ -1,8 +1,16 @@
 [Messages Control]
-# W0511: TODOs in code comments are fine.
-# W0142: *args and **kwargs are fine.
-disable=W0511,W0142
+disable=
+  bad-builtin,
+  locally-disabled,
+  fixme
 
 [BASIC]
 # Don't require docstrings on tests or Python Special Methods
 no-docstring-rgx=(__.*__|[tT]est.*|setUp|tearDown)
+# Some names we are okay with
+good-names=f,e,i,j,k,v,ex,_,x,y,z
+
+[REPORTS]
+msg-template={msg_id}({symbol}): {path},{line}: {msg} | {obj}
+reports=yes
+output-format=colorized

@@ -4,12 +4,13 @@ machine:
 
 dependencies:
   override:
-    - pip install tox
-    - pip install python-coveralls
+    - pip install -U pip
+    - pip install -U tox tox-pyenv python-coveralls
+    - pyenv local 2.7.9 3.4.3 3.5.0
 
 test:
   override:
-    - env PATH="$HOME/bin:$PATH" tox
+    - tox -v
   post:
     - mkdir -p $CIRCLE_ARTIFACTS/coverage
     - mkdir -p $CIRCLE_TEST_REPORTS/xunit
